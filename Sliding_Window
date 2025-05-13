@@ -1,27 +1,38 @@
+
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
-int main()
-{
-    char string[]="Nobody noticed Him";
+int main() {
+    char text[100], pattern[100];
+    int i, j, m, n;
 
-    int length=strlen(string);
-    char pat[]="Him";
-    int index=0;
-    int len=strlen(pat);
-    int i,j;
-    for(i=0;i<(length-len+1);i++){
-            int count=0;
-            index=i;
-        for(j=i;j<i+len;j++){
+    printf("Enter the string/text: ");
+    scanf("%s", text);
 
-                if (string[j]==pat[count]){
-                        count+=1;}
-                else{
-                    break;
-                }
+    printf("Enter the pattern to be searched for: ");
+    scanf("%s", pattern);
+
+    n = strlen(text);
+    m = strlen(pattern);
+
+    for (i = 0; i <= n - m; i++) {
+        j = 0;
+        while (j < m && pattern[j] == text[i + j]) {
+            j++;
+        }
+        if (j == m) {
+            printf("Pattern found at index %d\n", i);
         }
     }
-    printf("Target %s Found in %d position",pat,index+1);
+
     return 0;
 }
+
+
+OUTPUT:
+Enter the string/text: GOOD_MORNING
+Enter the pattern to be searched for: MOR
+Pattern found at index 5
+
+
+=== Code Execution Successful ===
